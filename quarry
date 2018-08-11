@@ -15,6 +15,30 @@ local OUTOFFUEL = 3
 local FULLINV = 4
 local BLOCKEDMOV = 5
 
+local CHARCOALONLY = false
+local USEMODEM = false
+
+
+-- Arguments
+local tArgs = {...}
+for i=1,#tArgs do
+  local arg = tArgs[i]
+  if string.find(arg, "-") == 1 then
+    for c=2,string.len(arg) do
+      local ch = string.sub(arg,c,c)
+      if ch == 'c' then
+        CHARCOALONLY = true
+      elseif ch == 'm' then
+        USEMODEM = true
+      else
+        write("Invalid flag '")
+        write(ch)
+        print("'")
+      end
+    end
+  end
+end
+
 
 function out(s)
 
