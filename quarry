@@ -45,8 +45,9 @@ function out(s)
   s2 = s .. " @ [" .. x .. ", " .. y .. ", " .. z .. "]"
       
   print(s2)
-  rednet.broadcast(s2, "miningTurtle")
-  
+  if USEMODEM then
+    rednet.broadcast(s2, "miningTurtle")
+  end  
 end
 
 function dropInChest()
@@ -120,7 +121,7 @@ function refuel()
     
     if item and
         item.name == "minecraft:coal" and
-        item.damage == 1 and
+        (CHARCOALONLY == false or item.damage == 1) and
         turtle.refuel(1) then
         
       return true
@@ -311,7 +312,9 @@ function mainloop()
   end
 end
 
-rednet.open("right")
+if USEMODEM then
+  rednet.open("right")
+end
 
 out("\n\n\n-- WELCOME TO THE MINING TURTLE --\n\n")
 
@@ -327,4 +330,6 @@ while true do
   end
 end
 
-rednet.close("right")
+if USEMODEM then
+  rednet.close("right")
+end
