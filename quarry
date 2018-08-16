@@ -14,6 +14,7 @@ local LAYERCOMPLETE = 2
 local OUTOFFUEL = 3
 local FULLINV = 4
 local BLOCKEDMOV = 5
+local USRINTERRUPT = 6
 
 local CHARCOALONLY = false
 local USEMODEM = false
@@ -116,8 +117,6 @@ function refuel()
     turtle.select(i)
     
     item = turtle.getItemDetail()
-    
-    -- if item then print(item.name) end
     
     if item and
         item.name == "minecraft:coal" and
@@ -227,6 +226,12 @@ function digLayer()
   local errorcode = OK
 
   while errorcode == OK do
+    if USEMODEM then
+      local msg = rednet.receive(1)
+      if msg ~= nil and string.find(msg, "return") ~= nil then
+        return USRINTERRUPT
+      end
+    end
     errorcode = moveH()
   end
   
