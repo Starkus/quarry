@@ -11,6 +11,12 @@ function dig()
   local tries = 0
   
   while turtle.detect() do
+
+    local s, data = turtle.inspect()
+    if data.name == "minecraft:bedrock" then
+      printError("Hit bedrock forwards!")
+      return false
+    end
     
     turtle.dig()
     sleep(0.4)
@@ -31,6 +37,12 @@ function digDown()
   local tries = 0
   
   while turtle.detectDown() do
+
+    local s, data = turtle.inspectDown()
+    if data.name == "minecraft:bedrock" then
+      printError("Hit bedrock below!")
+      return false
+    end
   
     turtle.digDown()
     sleep(0.4)
@@ -49,6 +61,12 @@ function digUp()
   local tries = 0
   
   while turtle.detectUp() do
+
+    local s, data = turtle.inspectUp()
+    if data.name == "minecraft:bedrock" then
+      printError("Hit bedrock above!")
+      return false
+    end
   
     turtle.digUp()
     sleep(0.4)

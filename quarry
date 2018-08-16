@@ -158,7 +158,11 @@ function moveH()
   
   if facingfw and y<max-1 then
   -- Going one way
-    t.dig()
+    local dugFw = t.dig()
+    if dugFw == false then
+      out("Hit bedrock, can't keep going")
+      return BLOCKEDMOV
+    end
     t.digUp()
     t.digDown()
   
