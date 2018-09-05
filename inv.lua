@@ -61,7 +61,15 @@ function stackItems()
 end
 
 function selectItem(name)
-	
+	for i=1, 16 do
+		local data = turtle.getItemDetail(i)
+		if data and data.name == name then
+			turtle.select(i)
+			return true
+		end
+	end
+	return false
+end
 
 function dropThrash()
 	local thrash = {
