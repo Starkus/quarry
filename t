@@ -1,3 +1,5 @@
+local MAXTRIES = 100
+
 function turnAround()
   local success = false
   
@@ -22,7 +24,7 @@ function dig()
     sleep(0.4)
     
     tries = tries+1
-    if tries > 500 then
+    if tries > MAXTRIES then
 
       printError("Can't dig forward")
       return false
@@ -48,7 +50,7 @@ function digDown()
     sleep(0.4)
     
     tries = tries+1
-    if tries > 500 then
+    if tries > MAXTRIES then
       printError("Can't dig down")
       return false
     end
@@ -72,7 +74,7 @@ function digUp()
     sleep(0.4)
     
     tries = tries+1
-    if tries > 500 then
+    if tries > MAXTRIES then
       printError("Can't dig up")
       return false
     end
@@ -96,7 +98,7 @@ function fw(l)
       sleep(0.2)
       
       tries = tries+1
-      if tries > 500 then
+      if tries > MAXTRIES then
         printError("Can't move forward")
         return false
       end
@@ -120,7 +122,7 @@ function up(l)
       sleep(0.2)
       
       tries = tries+1
-      if tries > 500 then
+      if tries > MAXTRIES then
         printError("Can't move up")
         return false
       end
@@ -144,7 +146,7 @@ function down(l)
       sleep(0.2)
     
       tries = tries+1
-      if tries > 500 then
+      if tries > MAXTRIES then
         printError("Can't move down")
         return false
       end
