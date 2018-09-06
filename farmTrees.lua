@@ -67,7 +67,7 @@ function chop()
 			break
 		end
 	end
-	while success do
+	while turtle.detectDown() == false do
 		success = t.down()
 	end
 	turtle.back()
