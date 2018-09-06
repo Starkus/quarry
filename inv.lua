@@ -71,6 +71,17 @@ function selectItem(name)
 	return false
 end
 
+function getItemCount(name)
+	local count = 0
+	for i=1, 16 do
+		local data = turtle.getItemDetail(i)
+		if data and data.name == name then
+			count = count + data.count
+		end
+	end
+	return count
+end
+
 function dropThrash()
 	local thrash = {
 		"minecraft:cobblestone",

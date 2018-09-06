@@ -81,9 +81,7 @@ function dropInChest()
 end
 
 function goDown()
-
 	while true do
-	
 		if turtle.getFuelLevel() <= fuelNeededToGoBack() then
 			if not refuel() then
 				return OUTOFFUEL
@@ -91,38 +89,28 @@ function goDown()
 		end
 	
 		if not turtle.down() then
-
 			turtle.up()
 			z = z+1
-
 			return
 		end
-			
 		z = z-1
-			
 	end
 end
 
 function fuelNeededToGoBack()
-
 	return -z + x + y + 2
 end
 
 function refuel()
-
 	for i=1, 16 do
-		
 		-- Only run on Charcoal
-		
 		turtle.select(i)
 		
 		item = turtle.getItemDetail()
-		
 		if item and
 				item.name == "minecraft:coal" and
 				(CHARCOALONLY == false or item.damage == 1) and
 				turtle.refuel(1) then
-				
 			return true
 		end
 	end
@@ -131,9 +119,7 @@ function refuel()
 end
 
 function moveH()
-
 	if inv.isInventoryFull() then
-		
 		out("Dropping thrash")
 		inv.dropThrash()
 		
@@ -214,11 +200,9 @@ function moveH()
 		end
 		
 		facingfw = not facingfw
-		
 	end
 	
 	return OK
-	
 end
 
 function digLayer()
