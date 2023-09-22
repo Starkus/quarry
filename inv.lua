@@ -53,7 +53,7 @@ function stackItems()
 			this.slot = i
 			this.space = turtle.getItemSpace(i)
 			
-			m[this.name .. this.damage] = this
+			m[this.name .. (this.damage or "")] = this
 			
 			end
 		end
