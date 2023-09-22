@@ -19,7 +19,7 @@ function stackItems()
 		if this ~= nil then
 			-- Slot is not empty
 		
-			local saved = m[this.name .. this.damage]
+			local saved = m[this.name .. (this.damage or "")]
 		
 			if saved ~= nil then
 				-- We've seen this item before in the inventory
@@ -37,12 +37,12 @@ function stackItems()
 					saved.slot = i
 					saved.count = ammount - saved.space
 					-- Update on table.
-					m[this.name .. this.damage] = saved
+					m[this.name .. (this.damage or "")] = saved
 			
 				elseif ammount == saved.space then
 					-- Just delete the entry
 					
-					m[this.name .. this.damage] = nil
+					m[this.name .. (this.damage or "")] = nil
 					
 				end
 				
