@@ -67,6 +67,7 @@ function dropInChest()
 				data = turtle.getItemDetail()
 				
 				if data ~= nil and
+						data.name ~= "minecraft:charcoal" and
 						(data.name == "minecraft:coal" and CHARCOALONLY == false) == false and
 						(data.damage == nil or data.name .. data.damage ~= "minecraft:coal1") then
 
@@ -108,8 +109,8 @@ function refuel()
 		
 		item = turtle.getItemDetail()
 		if item and
-				item.name == "minecraft:coal" and
-				(CHARCOALONLY == false or item.damage == 1) and
+				(item.name == "minecraft:charcoal" or (item.name == "minecraft:coal" and
+				(CHARCOALONLY == false or item.damage == 1))) and
 				turtle.refuel(1) then
 			return true
 		end
